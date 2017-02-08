@@ -1,5 +1,6 @@
 NAME = libft.a
-SRCS = ft_alloc_array.c\
+SRCS = ft_abs.c\
+	   ft_alloc_array.c\
 	   ft_arraylen.c\
 	   ft_atoi.c\
 	   ft_bzero.c\

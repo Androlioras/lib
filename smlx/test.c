@@ -6,7 +6,7 @@
 /*   By: pribault <pribault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/03 13:52:45 by pribault          #+#    #+#             */
-/*   Updated: 2017/02/04 23:32:13 by pribault         ###   ########.fr       */
+/*   Updated: 2017/02/08 13:55:49 by pribault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,23 +26,27 @@ int		hook_loop(t_main *main)
 	t_pixel	c;
 	t_pixel	d;
 	t_pixel	bord[4];
+	static t_args	arg;
 
-	static double	zoom = 1;
-
+	if (!arg.mat)
+		arg = smlx_create_arg(0, 0, 0, 1);
 	if (main->win->keys.tab[53])
 	{
 		smlx_destroy_image(main->win, &(main->img1));
 		smlx_destroy_window(main->win);
+		ft_free_array((void**)arg.mat, 2);
 		exit(0);
 	}
 	if (main->win->keys.tab[123])
-		smlx_rotate_image(main->img2, -5);
+		smlx_rotate_matrix(arg.mat, -5);
 	if (main->win->keys.tab[124])
-		smlx_rotate_image(main->img2, 5);
+		smlx_rotate_matrix(arg.mat, 5);
 	if (main->win->keys.tab[126])
-		zoom *= 1.1;
+		arg.z *= 1.1;
 	if (main->win->keys.tab[125])
-		zoom /= 1.1;
+		arg.z /= 1.1;
+	// printf("[%f][%f]\n[%f][%f]\n\n", m[0][0], m[0][1], m[1][0], m[1][1]);
+	// ft_printf("w: %d | h: %d\n", main->img2->w, main->img2->h);
 	mlx_clear_window(main->win->mlx, main->win->win);
 	smlx_clear_image(main->img1);
 	// a = smlx_create_pixel(100, 100, 0xFF00FF);
@@ -61,8 +65,11 @@ int		hook_loop(t_main *main)
 	smlx_draw_line(main->img2, bord[1], bord[2]);
 	smlx_draw_line(main->img2, bord[2], bord[3]);
 	smlx_draw_line(main->img2, bord[3], bord[0]);
-	// smlx_put_image_to_image(main->img2, main->img1, 2);
-	smlx_put_image_to_window(main->win, main->img2, zoom);
+	// smlx_put_img_to_img(main->img2, main->img1, m, smlx_create_point(0, 0), zoom);
+	// smlx_put_img_to_img(main->img2, main->img1, smlx_create_point(50, 50), zoom);
+	// smlx_put_img_to_img(main->img2, main->img1, smlx_create_point(200, 200), zoom);
+	// smlx_put_img_to_img(main->img2, main->img1, smlx_create_point(300, 300), zoom);
+	smlx_put_img_to_win(main->win, main->img2, &arg);
 	// mlx_put_image_to_window(main->win->mlx, main->win->win, main->img1->img, 0, 0);
 	return (1);
 }
@@ -78,7 +85,6 @@ int		main(int argc, char **argv)
 	smlx_set_flags(&win, SMLX_ROTATION | SMLX_C_SLOPE | SMLX_MOTION);
 	img = smlx_new_image(&win, 640, 480);
 	img2 = smlx_new_image_xpm(&win, "unicorn_2.xpm");
-	img2->pos = smlx_create_point(100, 100);
 	main.win = &win;
 	main.img1 = img;
 	main.img2 = img2;

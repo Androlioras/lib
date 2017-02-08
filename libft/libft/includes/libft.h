@@ -6,7 +6,7 @@
 /*   By: pribault <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/03 16:13:23 by pribault          #+#    #+#             */
-/*   Updated: 2017/02/03 19:33:46 by pribault         ###   ########.fr       */
+/*   Updated: 2017/02/08 16:48:00 by pribault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ typedef struct		s_list
 /*
 ** prototypes
 */
-
+int					ft_abs(int n);
 void				**ft_alloc_array(size_t h, size_t w, size_t size);
 int					ft_arraylen(char **array);
 int					ft_atoi(char *str);

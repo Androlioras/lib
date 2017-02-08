@@ -6,7 +6,7 @@
 /*   By: pribault <pribault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/03 14:22:38 by pribault          #+#    #+#             */
-/*   Updated: 2017/02/04 17:17:10 by pribault         ###   ########.fr       */
+/*   Updated: 2017/02/08 14:18:50 by pribault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	smlx_init(t_win *win, int w, int h, char *title)
 	win->mlx = mlx_init();
 	win->win = mlx_new_window(win->mlx, w, h, title);
 	win->title = ft_strdup(title);
+	win->buttons = NULL;
 	ft_bzero(win->keys.tab, TAB_SIZE);
 	ft_bzero(win->keys.mouse, 2);
 	win->w = w;

@@ -6,7 +6,7 @@
 /*   By: pribault <pribault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/03 14:33:29 by pribault          #+#    #+#             */
-/*   Updated: 2017/02/04 21:12:44 by pribault         ###   ########.fr       */
+/*   Updated: 2017/02/08 13:12:42 by pribault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,6 @@ t_image	*smlx_new_image_xpm(t_win *win, char *file)
 		return (NULL);
 	if (!(i = (t_image*)malloc(sizeof(t_image))))
 		return (NULL);
-	i->rot[0][0] = 1;
-	i->rot[0][1] = 0;
-	i->rot[1][0] = 0;
-	i->rot[1][1] = 1;
-	i->pos = smlx_create_point(0, 0);
 	if (!(i->img = mlx_xpm_file_to_image(win->mlx, file, &(i->w), &(i->h))))
 		smlx_destroy_image(win, &i);
 	if (!i)
@@ -46,11 +41,6 @@ t_image	*smlx_new_image(t_win *win, int w, int h)
 		return (NULL);
 	i->w = w;
 	i->h = h;
-	i->rot[0][0] = 1;
-	i->rot[0][1] = 0;
-	i->rot[1][0] = 0;
-	i->rot[1][1] = 1;
-	i->pos = smlx_create_point(0, 0);
 	if (!(i->img = mlx_new_image(win->mlx, w, h)))
 		smlx_destroy_image(win, &i);
 	if (!i)

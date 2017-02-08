@@ -8,9 +8,13 @@ SRCS = smlx_init.c\
 	   smlx_draw_line.c\
 	   smlx_pixel_put.c\
 	   smlx_set_flags.c\
+	   smlx_translate.c\
 	   smlx_key_hook.c\
 	   smlx_converts.c\
 	   smlx_rotate.c\
+	   smlx_create.c\
+	   smlx_button.c\
+	   smlx_matrix.c\
 	   smlx_hooks.c
 OBJS = $(SRCS:.c=.o)
 FLAGS = -Wall -Wextra -Werror
