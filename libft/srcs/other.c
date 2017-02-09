@@ -6,7 +6,7 @@
 /*   By: pribault <pribault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/12 16:39:16 by pribault          #+#    #+#             */
-/*   Updated: 2017/01/13 16:13:32 by pribault         ###   ########.fr       */
+/*   Updated: 2017/02/09 13:03:38 by pribault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 
 int		ft_abs(int nbr)
 {
-	if (nbr < 0)
-		return (-nbr);
-	return (nbr);
+	return ((nbr < 0) ? -nbr : nbr);
 }
 
 int		is_number(const char *f, int *i)

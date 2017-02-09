@@ -6,7 +6,7 @@
 /*   By: pribault <pribault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/08 15:26:17 by pribault          #+#    #+#             */
-/*   Updated: 2017/02/08 16:57:02 by pribault         ###   ########.fr       */
+/*   Updated: 2017/02/09 12:56:27 by pribault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ double	**smlx_create_matrix(int angle)
 	return (r);
 }
 
-void	smlx_delete_matrix(double **mat)
+void	smlx_destroy_matrix(double **mat)
 {
 	ft_free_array((void**)mat, 2);
 }

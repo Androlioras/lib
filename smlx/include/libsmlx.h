@@ -6,7 +6,7 @@
 /*   By: pribault <pribault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/03 13:41:25 by pribault          #+#    #+#             */
-/*   Updated: 2017/02/08 16:40:57 by pribault         ###   ########.fr       */
+/*   Updated: 2017/02/09 15:59:58 by pribault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,6 +158,13 @@ void				smlx_draw_line(t_image *img, t_pixel a, t_pixel b);
 void				smlx_pixel_put(t_image *img, t_pixel p);
 
 /*
+**	buttons
+*/
+
+t_button			*smlx_new_button(t_image *img, t_point a, t_point b, int k);
+void				smlx_destroy_button(t_button **button);
+
+/*
 **	rotate functions
 */
 
@@ -179,7 +186,7 @@ t_point				smlx_create_point(int x, int y);
 void				smlx_rotate_matrix(double **mat, int angle);
 void				smlx_invert_matrix(double **mat);
 double				**smlx_create_matrix(int angle);
-void				smlx_delete_matrix(double **mat);
+void				smlx_destroy_matrix(double **mat);
 double				**smlx_copy_matrix(double **mat);
 
 /*
@@ -191,7 +198,7 @@ void				smlx_translate_point(t_point *p, t_point *v);
 void				smlx_translate_pixel(t_pixel *p, t_point *v);
 
 /*
-**
+**	others
 */
 
 t_pixel				smlx_mix_color(t_pixel a, t_uint b);
